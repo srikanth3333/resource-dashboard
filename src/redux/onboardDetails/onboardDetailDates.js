@@ -8,7 +8,6 @@ export const getOnboardDetailsDate = createAsyncThunk('onboard/getOnboardDetails
         return await axios.get(`${API_URL}/getOnboardDetails?page=${payload.page}&startDate=${payload.startDate}&endDate=${payload.endDate}`)
         .then(res => {
             try{
-                console.log(res)
                 return {data:res.data.result,count:res.data.result.length,totalCount:res.data.totalCounts}
             }catch(e){ 
                 return {data:[]}

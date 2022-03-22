@@ -115,7 +115,7 @@ const OnBoardList = () =>  {
             title="Onboard Details"
             columns={[
                 {
-                    name: "Candidate  me",
+                    name: "Candidate name",
                     label: "Candidate Name",
                     options: {
                         filter: true,
@@ -159,7 +159,7 @@ const OnBoardList = () =>  {
                                     <Moment format="hh:mm:ss A">{val}</Moment>
                                 </>
                             )
-                          }
+                        }
                     }
                 },
                 {
@@ -227,7 +227,7 @@ const OnBoardList = () =>  {
                     }
                 }, 
                 {
-                    name: "Requirement Email from GENERAL/Known Ma ger",
+                    name: "Requirement Email from GENERAL/Known Manager",
                     label: "Requirement Email from GENERAL/Known Manager",
                     options: {
                         filter: true,
@@ -291,7 +291,7 @@ const OnBoardList = () =>  {
                     }
                 },
                 {
-                    name: "Recruiter me",
+                    name: "Recruiter  name",
                     label: "Recruiter Name",
                     options: {
                         filter: true,
@@ -299,7 +299,7 @@ const OnBoardList = () =>  {
                     }
                 },
                 {
-                    name: "Team Lead me",
+                    name: "Team Lead  name",
                     label: "Team Lead Name",
                     options: {
                         filter: true,

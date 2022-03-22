@@ -90,18 +90,20 @@ const Customers = () =>  {
                       <div className="col-lg-4">
                             <div className="form-group">
                               <label>Select Relevant Experience</label>
-                              <Select 
+                              <input type="text" className="form-control" placeholder="Relevant Experience" onChange={(e) => setRel(e.target.value)}/>
+                              {/* <Select 
                                     options={optionsRel} 
                                     onChange={(val) => {
                                       setRel(val.value)
                                       console.log(val.value)
                                     }}
-                                />
+                                /> */}
                             </div>
                       </div> 
                       <div className="col-lg-4">
                             <div className="form-group">
                               <label>Select Total Experience</label>
+                              
                               <Select 
                                     options={optionsTotal} 
                                     onChange={(val) => {

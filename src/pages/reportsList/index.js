@@ -5,15 +5,18 @@ import { DashboardLayout } from '../../components/dashboard-layout';
 import {Table}  from '../../components/Table';
 import {getReports} from "../../redux/reportsData/reportsSlice";
 import {useDispatch,useSelector} from "react-redux";
-
+import Moment from 'react-moment';
 
 const ReportsList = () =>  {
 
   let dispatch = useDispatch()
   let reports = useSelector((state) => state.reports)
+  let optionsData = useSelector((state) => state.options)
+  const [startDate, setStartDate] = React.useState('')
+  const [endDate, setEndDate] = React.useState('')
 
   React.useEffect(() => {
-    dispatch(getReports({page:0}))
+    dispatch(getReports({page:0,startDate:'',endDate:''}))
   },[])
 
   return (
@@ -37,9 +40,34 @@ const ReportsList = () =>  {
                 <div className="card-body text-center">
                       <h2>Total</h2>
                       <h3>{reports.totalCount}</h3>
-                </div>  
+                </div>
               </div>
-            </div>  
+            </div> 
+            <div className="col-lg-2">
+              <p>SkillSet: {optionsData.skill}</p>
+              <p>Relevant Experience: {optionsData.rel}</p>
+              <p>Prefered Location: {optionsData.preLoc}</p>
+            </div> 
+            <div className="col-lg-6">
+                <form action="" className="d-flex">
+                    <div className="form-group">
+                        <label htmlFor="">Start Date</label>
+                        <input type="date" onChange={(e) => {
+                            setStartDate(e.target.value);
+                            dispatch(getReports({startDate:e.target.value,endDate:endDate}))
+                        }} className="form-control" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="">End Date</label>
+                        <input type="date" className="form-control" 
+                            onChange={(e)  => {
+                                setEndDate(e.target.value)
+                                dispatch(getReports({startDate:startDate,endDate:e.target.value}))
+                            }}
+                        />
+                    </div>
+                </form>
+            </div>
           </div>
           <Table
         //   options={options}
@@ -48,7 +76,7 @@ const ReportsList = () =>  {
            data={reports.data} 
            loadingState={reports.loading}  
            paginateApi={getReports}
-           currentData={{startDate:'',endDate:''}}
+           currentData={{startDate:startDate,endDate:endDate}}
            title="Reports List"
           columns={
             [
@@ -58,6 +86,14 @@ const ReportsList = () =>  {
                               options: {
                               filter: true,
                               sort: true,
+                              customBodyRender: (val) => {
+                                return (
+                                    <>
+                                        <Moment format="DD/MM/YYYY">{val}</Moment> <br />
+                                        <Moment format="hh:mm:ss A">{val}</Moment>
+                                    </>
+                                )
+                                }
                               }
                           },
                           {
