@@ -19,7 +19,7 @@ import { useRouter } from 'next/router'
 import List from "../reportsList/index"
 
 
-const onboardDetails = () =>  {
+const OnboardDetails = () =>  {
 
 
   const router = useRouter()
@@ -178,11 +178,11 @@ const onboardDetails = () =>  {
     </>
   );
 }
-onboardDetails.getLayout = (page) => (
+OnboardDetails.getLayout = (page) => (
   <DashboardLayout>
     {page}
   </DashboardLayout>
 );
 
 
-export default onboardDetails;
+export default OnboardDetails;
