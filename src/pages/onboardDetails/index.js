@@ -16,7 +16,7 @@ import {
 import {useDispatch,useSelector} from "react-redux";
 import Select from 'react-select';
 import { useRouter } from 'next/router'
-import List from "../reportsList/index"
+
 
 
 const OnboardDetails = () =>  {
