@@ -47,7 +47,7 @@ export const Table = (props) => {
           switch (action) {
             case "changePage":
               setPage(tableState.page)
-              dispatch(props.paginateApi({...props.currentData,page:tableState.page,startDate:fromDate,endDate:toDate}))
+              dispatch(props.paginateApi({...props.currentData,page:tableState.page,startDate:props.currentData.startDate,endDate:props.currentData.endDate}))
               break;
           }
         },

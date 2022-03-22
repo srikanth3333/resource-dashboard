@@ -32,6 +32,17 @@ const items = [
     icon: (<UsersIcon fontSize="small" />),
     title: 'Add Report'
   },
+  {
+    href: '/onboardDetails',
+    icon: (<UsersIcon fontSize="small" />),
+    title: 'Onboard Details Filter'
+  },
+  {
+    href: '/onboardListDates',
+    icon: (<UsersIcon fontSize="small" />),
+    title: 'Onboard List'
+  },
+  
   // {
   //   href: '/products',
   //   icon: (<ShoppingBagIcon fontSize="small" />),
