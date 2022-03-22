@@ -48,6 +48,7 @@ const ReportsList = () =>  {
            data={reports.data} 
            loadingState={reports.loading}  
            paginateApi={getReports}
+           currentData={{startDate:'',endDate:''}}
            title="Reports List"
           columns={
             [

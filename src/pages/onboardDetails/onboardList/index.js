@@ -47,6 +47,7 @@ const OnBoardList = () =>  {
             data={onboardData.data} 
             loadingState={onboardData.loading}  
             paginateApi={getOnboardDetails}
+            currentData={{startDate:'',endDate:''}}
             title="Onboard Details"
             columns={[
                 {
