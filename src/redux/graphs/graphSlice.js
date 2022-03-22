@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+import {API_URL} from "../../components/utils"
 
 export const getGraphBar = createAsyncThunk('graphs/getGraphBar', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getReportgraphs?skillSet=true`)
+        return await axios.get(`${API_URL}/getReportgraphs?skillSet=true`)
         .then(res => {
             try{
                 return {dataBar:res.data}
@@ -18,7 +18,7 @@ export const getGraphBar = createAsyncThunk('graphs/getGraphBar',
 
 export const getGraphLine = createAsyncThunk('graphs/getGraphLine', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getReportgraphs?preWorkLoc=true`)
+        return await axios.get(`${API_URL}/getReportgraphs?preWorkLoc=true`)
         .then(res => {
             try{
                 return {dataLine:res.data}

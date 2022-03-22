@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import {API_URL} from "../../components/utils"
 
 export const getOnboardDetails = createAsyncThunk('onboard/getOnboardDetails', 
 	async (payload, {getState}) => {
         let {onboardOption} = getState();
-        return await axios.get(`http://localhost:7000/api/getOnboardDetails?page=${payload.page}&candidateName=${onboardOption.candidateName}&contactNo=${onboardOption.contactNo}&skillSet=${onboardOption.skillSet}&rgsId=${onboardOption.rgsId}&tentativeDOJ=${onboardOption.tentativeDOJ}&rmgLocation=${onboardOption.rmgLocation}&recruiterName=${onboardOption.recruiterName}&locationOnboard=${onboardOption.locationOnboard}`)
+        return await axios.get(`${API_URL}/getOnboardDetails?page=${payload.page}&candidateName=${onboardOption.candidateName}&contactNo=${onboardOption.contactNo}&skillSet=${onboardOption.skillSet}&rgsId=${onboardOption.rgsId}&tentativeDOJ=${onboardOption.tentativeDOJ}&rmgLocation=${onboardOption.rmgLocation}&recruiterName=${onboardOption.recruiterName}&locationOnboard=${onboardOption.locationOnboard}`)
         .then(res => {
             try{
                 console.log(res)

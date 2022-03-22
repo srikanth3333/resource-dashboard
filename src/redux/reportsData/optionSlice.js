@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+import {API_URL} from "../../components/utils"
 
 export const getOptions = createAsyncThunk('options/getOptions', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getReportOptions?skillSet=true`)
+        return await axios.get(`${API_URL}/getReportOptions?skillSet=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -21,7 +21,7 @@ export const getOptions = createAsyncThunk('options/getOptions',
 
 export const getOptionsExpRel = createAsyncThunk('options/getOptionsExpRel', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getReportOptions?experienceRel=true`)
+        return await axios.get(`${API_URL}/getReportOptions?experienceRel=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -37,7 +37,7 @@ export const getOptionsExpRel = createAsyncThunk('options/getOptionsExpRel',
 
 export const getOptionsExpTotal = createAsyncThunk('options/getOptionsExpTotal', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getReportOptions?experienceTotal=true`)
+        return await axios.get(`${API_URL}/getReportOptions?experienceTotal=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -54,7 +54,7 @@ export const getOptionsExpTotal = createAsyncThunk('options/getOptionsExpTotal',
 
 export const getOptionsnotPeriod = createAsyncThunk('options/getOptionsnotPeriod', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getReportOptions?noticePeriod=true`)
+        return await axios.get(`${API_URL}/getReportOptions?noticePeriod=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -70,7 +70,7 @@ export const getOptionsnotPeriod = createAsyncThunk('options/getOptionsnotPeriod
 
 export const getOptionsPreWorkLoc = createAsyncThunk('options/getOptionsPreWorkLoc', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getReportOptions?preWorkLoc=true`)
+        return await axios.get(`${API_URL}/getReportOptions?preWorkLoc=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -87,7 +87,7 @@ export const getOptionsPreWorkLoc = createAsyncThunk('options/getOptionsPreWorkL
 
 export const getOptionsCategory = createAsyncThunk('options/getOptionsCategory', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getReportOptions?category=true`)
+        return await axios.get(`${API_URL}/getReportOptions?category=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {

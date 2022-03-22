@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import {API_URL} from "../../components/utils"
 
 
 export const getOptionsCandidate = createAsyncThunk('options/getOptionsCandidate', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getOnboardOptions?candidateName=true`)
+        return await axios.get(`${API_URL}/getOnboardOptions?candidateName=true`)
         .then(res => {
             try{
                 console.log(res)
@@ -22,7 +23,7 @@ export const getOptionsCandidate = createAsyncThunk('options/getOptionsCandidate
 
 export const getOptionsContact = createAsyncThunk('options/getOptionsContact', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getOnboardOptions?contactNo=true`)
+        return await axios.get(`${API_URL}/getOnboardOptions?contactNo=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -38,7 +39,7 @@ export const getOptionsContact = createAsyncThunk('options/getOptionsContact',
 
 export const getOptionsSkillSet = createAsyncThunk('options/getOptionsSkillSet', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getOnboardOptions?skillSet=true`)
+        return await axios.get(`${API_URL}/getOnboardOptions?skillSet=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -54,7 +55,7 @@ export const getOptionsSkillSet = createAsyncThunk('options/getOptionsSkillSet',
 
 export const getOptionsRgsId = createAsyncThunk('options/getOptionsRgsId', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getOnboardOptions?rgsId=true`)
+        return await axios.get(`${API_URL}/getOnboardOptions?rgsId=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -72,7 +73,7 @@ export const getOptionsRgsId = createAsyncThunk('options/getOptionsRgsId',
 
 export const getOptionsTentativeDOJ = createAsyncThunk('options/getOptionsTentativeDOJ', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getOnboardOptions?tentativeDOJ=true`)
+        return await axios.get(`${API_URL}/getOnboardOptions?tentativeDOJ=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -89,7 +90,7 @@ export const getOptionsTentativeDOJ = createAsyncThunk('options/getOptionsTentat
 
 export const getOptionsRmgLocation = createAsyncThunk('options/getOptionsRmgLocation', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getOnboardOptions?rmgLocation=true`)
+        return await axios.get(`${API_URL}/getOnboardOptions?rmgLocation=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -106,7 +107,7 @@ export const getOptionsRmgLocation = createAsyncThunk('options/getOptionsRmgLoca
 
 export const getOptionsRecruiterName = createAsyncThunk('options/getOptionsRecruiterName', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getOnboardOptions?recruiterName=true`)
+        return await axios.get(`${API_URL}/getOnboardOptions?recruiterName=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {
@@ -122,7 +123,7 @@ export const getOptionsRecruiterName = createAsyncThunk('options/getOptionsRecru
 
 export const getOptionsLocationOnboard = createAsyncThunk('options/getOptionsLocationOnboard', 
 	async (payload, {getState}) => {
-        return await axios.get(`http://localhost:7000/api/getOnboardOptions?locationOnboard=true`)
+        return await axios.get(`${API_URL}/getOnboardOptions?locationOnboard=true`)
         .then(res => {
             try{
                 let objData = res.data.reduce((acc,val,index) => {

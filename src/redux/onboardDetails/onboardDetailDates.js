@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import {API_URL} from "../../components/utils"
 
 export const getOnboardDetailsDate = createAsyncThunk('onboard/getOnboardDetailsDates', 
 	async (payload, {getState}) => {
         let {onboardOption} = getState();
-        return await axios.get(`http://localhost:7000/api/getOnboardDetails?page=${payload.page}&startDate=${payload.startDate}&endDate=${payload.endDate}`)
+        return await axios.get(`${API_URL}/getOnboardDetails?page=${payload.page}&startDate=${payload.startDate}&endDate=${payload.endDate}`)
         .then(res => {
             try{
                 console.log(res)
