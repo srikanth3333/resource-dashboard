@@ -5,6 +5,7 @@ import graphsReducer from "../redux/graphs/graphSlice"
 import onboardReducer from "../redux/onboardDetails/onboardDetails"
 import onboardDatesReducer from "../redux/onboardDetails/onboardDetailDates"
 import onboardOptionReducer from "../redux/onboardDetails/onboardOptions";
+import EmployeeGraphReducer from "../redux/employeeGraph/employeeGraphSlice"
 
 export default configureStore({
 	reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
 		onboard:onboardReducer,
 		onboardDates:onboardDatesReducer,
 		onboardOption:onboardOptionReducer,
+		EmployeeGraph:EmployeeGraphReducer,
 	},
 });

@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import { Box, Container, Grid } from '@mui/material';
 import { Budget } from '../components/dashboard/budget';
@@ -9,19 +10,20 @@ import {BarGraph} from "../components/graphs/bar-graph"
 import {PieGraph } from '../components/graphs/pie-graph';
 import {useSelector,useDispatch} from "react-redux";
 import {getGraphBar,getGraphLine} from "../redux/graphs/graphSlice";
-import React from 'react';
+import {getEmployeeGraphBar} from "../redux/employeeGraph/employeeGraphSlice"
 
 const Dashboard = () => {
 
 
   let dispatch = useDispatch()
-  let graphsData = useSelector((state) => state.graphs)
-  console.log('graphsData')
-  console.log(graphsData)
+  let graphsData = useSelector((state) => state.EmployeeGraph)
+  const [startDate, setStartDate] = React.useState('')
+  const [endDate, setEndDate] = React.useState('')
 
   React.useEffect(() => {
     dispatch(getGraphBar({}))
     dispatch(getGraphLine({}))
+    dispatch(getEmployeeGraphBar({startDate:'',endDate:'',}))
   },[])
 
   return (
@@ -44,8 +46,25 @@ const Dashboard = () => {
             spacing={3}
           >
             
-            
-            <Grid
+            <form action="" className="d-flex">
+                <div className="form-group">
+                    <label htmlFor="">Start Date</label>
+                    <input type="date" onChange={(e) => {
+                        setStartDate(e.target.value);
+                        dispatch(getEmployeeGraphBar({startDate:e.target.value,endDate:endDate}))
+                    }} className="form-control" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="">End Date</label>
+                    <input type="date" className="form-control" 
+                        onChange={(e)  => {
+                            setEndDate(e.target.value)
+                            dispatch(getEmployeeGraphBar({startDate:startDate,endDate:e.target.value}))
+                        }}
+                    />
+                </div>
+            </form>
+            {/* <Grid
               item
               lg={12}
               md={12}
@@ -56,7 +75,7 @@ const Dashboard = () => {
                   data={graphsData.dataBar} 
                   loadingState={false} 
                   title="User Graphs for test"  />
-            </Grid>
+            </Grid> */}
             {/* <Grid
               item
               lg={4}
@@ -78,7 +97,7 @@ const Dashboard = () => {
             >
               
                 <PieGraph 
-                  data={graphsData.dataLine}
+                  data={graphsData.dataBar}
                   loadingState={false} title="User Graphs for test"
                 />
             </Grid>
