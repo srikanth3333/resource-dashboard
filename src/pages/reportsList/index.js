@@ -14,9 +14,12 @@ const ReportsList = () =>  {
   let optionsData = useSelector((state) => state.options)
   const [startDate, setStartDate] = React.useState('')
   const [endDate, setEndDate] = React.useState('')
+  const [rel, setRel] = React.useState('')
+  const [total, setTotal] = React.useState('')
+  const [skill, setSkill] = React.useState('')
 
   React.useEffect(() => {
-    dispatch(getReports({page:0,startDate:'',endDate:''}))
+    dispatch(getReports({page:0,startDate:'',endDate:'',skill:'',rel:'',total:''}))
   },[])
 
   return (
@@ -34,8 +37,8 @@ const ReportsList = () =>  {
         }}
       >
         <Container maxWidth={false}>
-          <div className="row justify-content-center">
-            <div className="col-lg-4">
+          <div className="row">
+            <div className="col-lg-12">
               <div className="card shadow-sm mb-4">
                 <div className="card-body text-center">
                       <h2>Total</h2>
@@ -43,18 +46,44 @@ const ReportsList = () =>  {
                 </div>
               </div>
             </div> 
-            <div className="col-lg-2">
-              <p>SkillSet: {optionsData.skill}</p>
-              <p>Relevant Experience: {optionsData.rel}</p>
-              <p>Prefered Location: {optionsData.preLoc}</p>
+            <div className="col-lg-7 mb-4 d-flex">
+              <div>
+              <p>SkillSet:</p>
+              <input type="text"  
+                onChange={(e) => {
+                  setSkill(e.target.value);
+                  dispatch(getReports({startDate:startDate,endDate:endDate, skill:e.target.value, rel:rel, total: total}))
+              }}
+              className="form-control" placeholder="Skill set"/>
+              </div>
+              <div>
+                <p>Relevant Experience:</p>
+                
+                <input type="text" 
+                  onChange={(e) => {
+                      setRel(e.target.value);
+                      dispatch(getReports({startDate:startDate,endDate:endDate, rel:e.target.value, total:total,skill:skill,}))
+                  }}
+                  className="form-control" placeholder="Relevant Experience"/>
+              </div>
+              <div>
+                <p>Total Experience: </p>
+                
+                <input type="text" 
+                  onChange={(e) => {
+                    setTotal(e.target.value);
+                    dispatch(getReports({startDate:startDate,endDate:endDate, total:e.target.value,rel:rel,skill:skill }))
+                  }}
+                  className="form-control" placeholder="Total Experience"/>
+              </div>
             </div> 
-            <div className="col-lg-6">
+            <div className="col-lg-5">
                 <form action="" className="d-flex">
                     <div className="form-group">
                         <label htmlFor="">Start Date</label>
                         <input type="date" onChange={(e) => {
                             setStartDate(e.target.value);
-                            dispatch(getReports({startDate:e.target.value,endDate:endDate}))
+                            dispatch(getReports({startDate:e.target.value,endDate:endDate,total:total,rel:rel,skill:skill}))
                         }} className="form-control" />
                     </div>
                     <div className="form-group">
@@ -62,7 +91,7 @@ const ReportsList = () =>  {
                         <input type="date" className="form-control" 
                             onChange={(e)  => {
                                 setEndDate(e.target.value)
-                                dispatch(getReports({startDate:startDate,endDate:e.target.value}))
+                                dispatch(getReports({startDate:startDate,endDate:e.target.value,total:total,rel:rel,skill:skill}))
                             }}
                         />
                     </div>
@@ -76,7 +105,7 @@ const ReportsList = () =>  {
            data={reports.data} 
            loadingState={reports.loading}  
            paginateApi={getReports}
-           currentData={{startDate:startDate,endDate:endDate}}
+           currentData={{startDate:startDate,endDate:endDate,total:total,rel:rel,skill:skill}}
            title="Reports List"
           columns={
             [

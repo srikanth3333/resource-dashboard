@@ -5,7 +5,7 @@ import {API_URL} from "../../components/utils"
 export const getReports = createAsyncThunk('reports/getReports', 
 	async (payload, {getState}) => {
         let {options} = getState();
-        return await axios.get(`${API_URL}/addReportsListData?page=${payload.page}&skillSet=${options.skill}&experienceRel=${options.rel}&experienceTotal=${options.total}&noticePeriod=${options.notice}&preWorkLoc=${options.preLoc}&category=${options.categoryValue}&startDate=${payload.startDate}&endDate=${payload.endDate}`)
+        return await axios.get(`${API_URL}/addReportsListData?page=${payload.page}&skillSet=${payload.skill}&experienceRel=${payload.rel}&experienceTotal=${payload.total}&noticePeriod=${options.notice}&preWorkLoc=${options.preLoc}&category=${options.categoryValue}&startDate=${payload.startDate}&endDate=${payload.endDate}`)
         .then(res => {
             console.log(res)
             try{

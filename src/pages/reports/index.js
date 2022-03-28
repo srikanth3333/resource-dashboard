@@ -82,7 +82,6 @@ const Customers = () =>  {
                                     options={options} 
                                     onChange={(val) => {
                                       setSkill(val.value)
-                                      console.log(val.value)
                                     }}
                                 />
                             </div>
@@ -103,14 +102,14 @@ const Customers = () =>  {
                       <div className="col-lg-4">
                             <div className="form-group">
                               <label>Select Total Experience</label>
-                              
-                              <Select 
+                              <input type="text" className="form-control" placeholder="Total Experience" onChange={(e) => setTotal(e.target.value)}/>
+                              {/* <Select 
                                     options={optionsTotal} 
                                     onChange={(val) => {
                                       setTotal(val.value)
                                       console.log(val.value)
                                     }}
-                                />
+                                /> */}
                             </div>
                       </div> 
                       <div className="col-lg-4">

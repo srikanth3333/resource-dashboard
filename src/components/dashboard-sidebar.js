@@ -16,7 +16,7 @@ const items = [
     title: 'Home'
   },
   {
-    href: '/reports',
+    href: '/reportsList',
     icon: (<CogIcon fontSize="small" />),
     title: 'Search Resume'
   },
