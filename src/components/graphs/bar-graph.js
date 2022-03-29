@@ -9,9 +9,6 @@ export const BarGraph = (props) => {
         point.select();
     }
 
-    console.log('props.data')
-    console.log(props.data)
-
   return (
     <Card {...props} mt={3}>
           <CardHeader

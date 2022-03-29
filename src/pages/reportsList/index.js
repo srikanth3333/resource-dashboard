@@ -142,7 +142,7 @@ const ReportsList = () =>  {
                             }
                         },
                         {
-                          name: "Candiate Name",
+                          name: "Candidate Name",
                           label: "Candiate Name",
                           options: {
                               filter: true,
@@ -150,15 +150,15 @@ const ReportsList = () =>  {
                           }
                       },
                       {
-                        name: "Pan/Aadhar No",
+                        name: "Aadhar No",
                         label: "Pan/Aadhar No",
                         options: {
                             filter: true,
                             sort: true,
                         }
                     },                {
-                              name: "Contact No.",
-                              label: "Contact No.",
+                              name: "Contact No",
+                              label: "Contact No",
                               options: {
                                   filter: true,
                                   sort: true,
@@ -230,7 +230,7 @@ const ReportsList = () =>  {
                             }
                           },
                           {
-                            name: "GAP (If Any)",
+                            name: "GAP",
                             label: "GAP (If Any)",
                             options: {
                                 filter: true,
@@ -238,16 +238,16 @@ const ReportsList = () =>  {
                             }
                           },
                           {
-                            name: "Telephonic Round -Date",
-                            label: "Telephonic Round -Date",
+                            name: "Telephonic Round Date",
+                            label: "Telephonic Round Date",
                             options: {
                                 filter: true,
                                 sort: true,
                             }
                           },
                           {
-                            name: "Telephonic Round -Time",
-                            label: "Telephonic Round -Time",
+                            name: "Telephonic Round Time",
+                            label: "Telephonic Round Time",
                             options: {
                                 filter: true,
                                 sort: true,

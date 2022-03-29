@@ -4,8 +4,7 @@ import {API_URL} from "../../components/utils"
 
 export const getOnboardDetailsDate = createAsyncThunk('onboard/getOnboardDetailsDates', 
 	async (payload, {getState}) => {
-        let {onboardOption} = getState();
-        return await axios.get(`${API_URL}/getOnboardDetails?page=${payload.page}&startDate=${payload.startDate}&endDate=${payload.endDate}`)
+        return await axios.get(`${API_URL}/getOnboardDetails?page=${payload.page}&startDate=${payload.startDate}&endDate=${payload.endDate}&currentStatus=${payload.currentStatus}`)
         .then(res => {
             try{
                 return {data:res.data.result,count:res.data.result.length,totalCount:res.data.totalCounts}

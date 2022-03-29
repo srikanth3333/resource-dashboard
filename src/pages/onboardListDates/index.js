@@ -14,6 +14,7 @@ const OnBoardList = () =>  {
   let onboardData = useSelector((state) => state.onboardDates)
   const [startDate, setStartDate] = React.useState('')
   const [endDate, setEndDate] = React.useState('')
+  const [currentStatus, setCurrentStatus] = React.useState('')
 
   let optionsData = useSelector((state) => state.onboardOption)
   const optionsCandidate = optionsData && optionsData.candidateNameArr ? optionsData.candidateNameArr : []
@@ -21,7 +22,7 @@ const OnBoardList = () =>  {
   const optionsSkillSet = optionsData && optionsData.skillSetArr ? optionsData.skillSetArr : []
 
   React.useEffect(() => {
-    dispatch(getOnboardDetailsDate({page:0,startDate:'',endDate:''}))
+    dispatch(getOnboardDetailsDate({page:0,startDate:'',endDate:'',currentStatus:''}))
   },[dispatch])
 
   return (
@@ -46,13 +47,13 @@ const OnBoardList = () =>  {
                             <h2>Total List</h2>
                             <h3>{onboardData.totalCount}</h3>
                         </div>
-                        <div className="col-lg-4">
+                        <div className="col-lg-5">
                             <form action="" className="d-flex">
                                 <div className="form-group">
                                     <label htmlFor="">Start Date</label>
                                     <input type="date" onChange={(e) => {
                                         setStartDate(e.target.value);
-                                        dispatch(getOnboardDetailsDate({startDate:e.target.value,endDate:endDate}))
+                                        dispatch(getOnboardDetailsDate({startDate:e.target.value,endDate:endDate,currentStatus:currentStatus}))
                                     }} className="form-control" />
                                 </div>
                                 <div className="form-group">
@@ -60,13 +61,21 @@ const OnBoardList = () =>  {
                                     <input type="date" className="form-control" 
                                         onChange={(e)  => {
                                             setEndDate(e.target.value)
-                                            dispatch(getOnboardDetailsDate({startDate:startDate,endDate:e.target.value}))
+                                            dispatch(getOnboardDetailsDate({startDate:startDate,endDate:e.target.value,currentStatus:currentStatus}))
                                         }}
                                     />
                                 </div>
                             </form>
                         </div>
-                        
+                        <div className="col-lg-5">
+                            <label htmlFor="">Current Status</label>
+                            <input type="text" className="form-control" placeholder="Current status" 
+                                onChange={(e)  => {
+                                    setCurrentStatus(e.target.value)
+                                    dispatch(getOnboardDetailsDate({startDate:startDate,endDate:endDate,currentStatus:e.target.value}))
+                                }}
+                            />
+                        </div>
                     </div>
                     {/* <div className="row align-items-center">
                         <div className="col-lg-4">
@@ -115,7 +124,7 @@ const OnBoardList = () =>  {
             title="Onboard Details"
             columns={[
                 {
-                    name: "Candidate name",
+                    name: "Candidate Name",
                     label: "Candidate Name",
                     options: {
                         filter: true,
@@ -133,6 +142,14 @@ const OnBoardList = () =>  {
                 {
                     name: "Skill Set",
                     label: "Skill Set",
+                    options: {
+                        filter: true,
+                        sort: true,
+                    }
+                },
+                {
+                    name: "Current Status",
+                    label: "Current Status",
                     options: {
                         filter: true,
                         sort: true,
@@ -291,7 +308,7 @@ const OnBoardList = () =>  {
                     }
                 },
                 {
-                    name: "Recruiter  name",
+                    name: "Recruiter Name",
                     label: "Recruiter Name",
                     options: {
                         filter: true,
@@ -299,7 +316,7 @@ const OnBoardList = () =>  {
                     }
                 },
                 {
-                    name: "Team Lead  name",
+                    name: "Team Lead Name",
                     label: "Team Lead Name",
                     options: {
                         filter: true,
