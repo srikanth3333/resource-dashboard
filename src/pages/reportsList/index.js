@@ -22,6 +22,16 @@ const ReportsList = () =>  {
     dispatch(getReports({page:0,startDate:'',endDate:'',skill:'',rel:'',total:''}))
   },[])
 
+
+  const clearFilters = () => {
+    setStartDate('')
+    setEndDate('')
+    setRel('')
+    setTotal('')
+    setSkill('')
+    dispatch(getReports({page:0,startDate:'',endDate:'',skill:'',rel:'',total:''}))
+  }
+
   return (
     <>
       <Head>
@@ -97,6 +107,9 @@ const ReportsList = () =>  {
                     </div>
                 </form>
             </div>
+            <div className="col-lg-12">
+              <button className="btn btn-success mb-3"onClick={() => clearFilters()}>Clear Filters</button>
+            </div>
           </div>
           <Table
         //   options={options}
@@ -142,7 +155,7 @@ const ReportsList = () =>  {
                             }
                         },
                         {
-                          name: "Candidate Name",
+                          name: "Candiate Name",
                           label: "Candiate Name",
                           options: {
                               filter: true,
@@ -246,7 +259,7 @@ const ReportsList = () =>  {
                             }
                           },
                           {
-                            name: "Telephonic Round Time",
+                            name: "Telephonic Round  Time",
                             label: "Telephonic Round Time",
                             options: {
                                 filter: true,

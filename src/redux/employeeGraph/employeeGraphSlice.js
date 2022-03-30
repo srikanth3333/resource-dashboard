@@ -6,6 +6,7 @@ export const getEmployeeGraphBar = createAsyncThunk('graphs/getEmployeeGraphBar'
 	async (payload, {getState}) => {
         return await axios.get(`${API_URL}/employeeGraph?emailAddress=true&startDate=${payload.startDate}&endDate=${payload.endDate}`)
         .then(res => {
+            console.log(res)
             try{
                 return {dataBar:res.data}
             }catch(e){ 

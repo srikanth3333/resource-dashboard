@@ -25,6 +25,14 @@ const OnBoardList = () =>  {
     dispatch(getOnboardDetailsDate({page:0,startDate:'',endDate:'',currentStatus:''}))
   },[dispatch])
 
+  const clearFilters = () => {
+    setStartDate('')
+    setEndDate('')
+    setCurrentStatus('')
+    dispatch(getOnboardDetailsDate({page:0,startDate:'',endDate:'',currentStatus:''}))
+  }
+
+
   return (
     <>
       <Head>
@@ -75,6 +83,9 @@ const OnBoardList = () =>  {
                                     dispatch(getOnboardDetailsDate({startDate:startDate,endDate:endDate,currentStatus:e.target.value}))
                                 }}
                             />
+                        </div>
+                        <div className="col-lg-12">
+                            <button className="btn btn-success mb-3"onClick={() => clearFilters()}>Clear Filters</button>
                         </div>
                     </div>
                     {/* <div className="row align-items-center">
