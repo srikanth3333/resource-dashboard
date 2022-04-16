@@ -17,7 +17,7 @@
 .css-fgyrrh-MuiTablePagination-displayedRows {
     display: none !important;
 }
-
+/* 
 input[type="date"] {
     font-family: "Helvetica Neue",Helvetica,Arial;
     display:block;
@@ -73,7 +73,7 @@ input[type="date"] {
   }
   
   input[type="date"]:hover::-webkit-calendar-picker-indicator { opacity:0.05; }
-  input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15; }
+  input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15; } */
 
 .row-flex {
     display: flex;
@@ -163,4 +163,9 @@ table, th, td {
 
 label {
   margin-bottom: 10px;
+}
+
+.login {
+  height: 100vh;
+  align-items: center;
 }

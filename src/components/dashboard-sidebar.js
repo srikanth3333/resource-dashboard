@@ -25,11 +25,11 @@ const items = [
     icon: (<UsersIcon fontSize="small" />),
     title: 'Add Resume'
   },
-  {
-    href: '/onboardDetails',
-    icon: (<UsersIcon fontSize="small" />),
-    title: 'Onboard Details Filter'
-  },
+  // {
+  //   href: '/onboardDetails',
+  //   icon: (<UsersIcon fontSize="small" />),
+  //   title: 'Onboard Details Filter'
+  // },
   {
     href: '/onboardListDates',
     icon: (<UsersIcon fontSize="small" />),

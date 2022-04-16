@@ -6,6 +6,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Bell as BellIcon } from '../icons/bell';
 import { UserCircle as UserCircleIcon } from '../icons/user-circle';
 import { Users as UsersIcon } from '../icons/users';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -54,7 +56,10 @@ export const DashboardNavbar = (props) => {
           <Box sx={{ flexGrow: 1 }} />
           <Tooltip title="Contacts">
             <IconButton sx={{ ml: 1 }}>
-              <UsersIcon fontSize="small" />
+              <LogoutIcon fontSize="small" onClick={() => {
+                localStorage.clear();
+                window.location.href = "/"
+              }} />
             </IconButton>
           </Tooltip>
           <Tooltip title="Notifications">

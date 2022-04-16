@@ -9,7 +9,8 @@ import {
   Grid,
   TextField
 } from '@mui/material';
-import axios from 'axios'
+import axios from 'axios';
+import {API_URL} from "../../components/utils"
 
 export const AccountProfileDetails = (props) => {
   
@@ -42,7 +43,7 @@ export const AccountProfileDetails = (props) => {
   const handleChange = (event) => {
     event.preventDefault();
     let data = {
-        "Timestamp" : timestamp,
+        "Timestamp" : new Date(timestamp),
         "Email Address" : email,
         "Vendor Name" : venName,
         "Candiate Name" : canName,
@@ -57,20 +58,22 @@ export const AccountProfileDetails = (props) => {
         "Email ID" : emailUser,
         "Notice Period" : notices,
         "GAP (If Any)" : gap,
-        "Telephonic Round -Date" : teleData,
-        "Telephonic Round -Time" : teleTime,
+        "Telephonic Round -Date" : new Date(teleData),
+        "Telephonic Round -Time" : new Date(teleTime),
         "Category" : category,
         "Bill RATE" : bill,
         "Resume" : resume,
         "RMG SPOC NAME" : rmgSpoc,
         "RMG Email ID" : rmgEmail,
-        "For the Date of submission" : submission
+        "For the Date of submission" : new Date(submission)
     }
 
-    axios.post("http://localhost:7000/api/addReport", data)
+    axios.post(`${API_URL}/addReport`, data)
     .then(res => {
       if(res.data.status == true) {
         alert("Added Successfully")
+      }else {
+        alert("Something went wrong try again later")
       }
 
     })
@@ -148,11 +151,11 @@ export const AccountProfileDetails = (props) => {
             </div>
             <div className="form-group col-lg-4">
                   <label htmlFor="">Telephonic Round -Date</label>
-                  <input type="date" required onChange={(e) => setTeleData(e.target.value)} className="form-control" />
+                  <input type="datetime-local" required onChange={(e) => setTeleData(e.target.value)} className="form-control" />
             </div>
             <div className="form-group col-lg-4">
                   <label htmlFor="">Telephonic Round -Time</label>
-                  <input type="date" required onChange={(e) => setTeleTime(e.target.value)} className="form-control" />
+                  <input type="datetime-local" required onChange={(e) => setTeleTime(e.target.value)} className="form-control" />
             </div>
             <div className="form-group col-lg-4">
                   <label htmlFor="">Category</label>
