@@ -6,7 +6,7 @@ import {Table}  from '../../components/Table';
 import {getReports} from "../../redux/reportsData/reportsSlice";
 import {useDispatch,useSelector} from "react-redux";
 import Moment from 'react-moment';
-
+import DatePicker from 'react-datepicker';
 const ReportsList = () =>  {
 
   let dispatch = useDispatch()
@@ -47,16 +47,16 @@ const ReportsList = () =>  {
         }}
       >
         <Container maxWidth={false}>
-          <div className="row">
+          <div className="row align-items-center">
             <div className="col-lg-12">
-              <div className="card shadow-sm mb-4">
+              <div className="card shadow-sm">
                 <div className="card-body text-center">
                       <h2>Total</h2>
                       <h3>{reports.totalCount}</h3>
                 </div>
               </div>
             </div> 
-            <div className="col-lg-7 mb-4 d-flex">
+            <div className="col-lg-7 d-flex">
               <div>
               <p>SkillSet:</p>
               <input type="text"  
@@ -78,7 +78,6 @@ const ReportsList = () =>  {
               </div>
               <div>
                 <p>Total Experience: </p>
-                
                 <input type="text" 
                   onChange={(e) => {
                     setTotal(e.target.value);
@@ -91,19 +90,35 @@ const ReportsList = () =>  {
                 <form action="" className="d-flex">
                     <div className="form-group">
                         <label htmlFor="">Start Date</label>
-                        <input type="date" onChange={(e) => {
+                        <DatePicker dateFormat='dd/MM/yyyy' 
+                          placeholderText='DD/MM/YYYY' 
+                          selected={startDate} 
+                          onChange={(date) => {
+                            setStartDate(date);
+                            dispatch(getReports({startDate:date,endDate:endDate,total:total,rel:rel,skill:skill}))
+                          }} 
+                        />
+                        {/* <input type="date" onChange={(e) => {
                             setStartDate(e.target.value);
                             dispatch(getReports({startDate:e.target.value,endDate:endDate,total:total,rel:rel,skill:skill}))
-                        }} className="form-control" />
+                        }} className="form-control" /> */}
                     </div>
                     <div className="form-group">
                         <label htmlFor="">End Date</label>
-                        <input type="date" className="form-control" 
+                        <DatePicker dateFormat='dd/MM/yyyy' 
+                          placeholderText='DD/MM/YYYY' 
+                          selected={endDate} 
+                          onChange={(date) => {
+                            setEndDate(date)
+                            dispatch(getReports({startDate:startDate,endDate:date,total:total,rel:rel,skill:skill}))
+                          }} 
+                        />
+                        {/* <input type="date" className="form-control" 
                             onChange={(e)  => {
                                 setEndDate(e.target.value)
                                 dispatch(getReports({startDate:startDate,endDate:e.target.value,total:total,rel:rel,skill:skill}))
                             }}
-                        />
+                        /> */}
                     </div>
                 </form>
             </div>

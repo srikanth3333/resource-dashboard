@@ -5,7 +5,8 @@ import { DashboardNavbar } from './dashboard-navbar';
 import { DashboardSidebar } from './dashboard-sidebar';
 import {useSelector, useDispatch} from "react-redux";
 import Login from "../pages/login";
-import {verifyUser} from "../redux/auth/userSlice"
+import {verifyUser} from "../redux/auth/userSlice";
+import Loader from "./Loader"
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -38,7 +39,7 @@ export const DashboardLayout = (props) => {
 
 
   if(user.loading) {
-    return 'Loading please wait....'
+    return <Loader />
   }
 
   if(user.loggedIn == false) {

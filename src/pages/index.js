@@ -1,16 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
-import { Box, Container, Grid } from '@mui/material';
-import { Budget } from '../components/dashboard/budget';
-import { TasksProgress } from '../components/dashboard/tasks-progress';
-import { TotalCustomers } from '../components/dashboard/total-customers';
-import { TotalProfit } from '../components/dashboard/total-profit';
+import { Box, Container, Grid, Typography } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import { DashboardLayout } from '../components/dashboard-layout';
-import {BarGraph} from "../components/graphs/bar-graph"
 import {PieGraph } from '../components/graphs/pie-graph';
 import {useSelector,useDispatch} from "react-redux";
 import {getGraphBar,getGraphLine} from "../redux/graphs/graphSlice";
 import {getEmployeeGraphBar} from "../redux/employeeGraph/employeeGraphSlice"
+import DatePicker from 'react-datepicker';
+
 
 const Dashboard = () => {
 
@@ -49,19 +47,35 @@ const Dashboard = () => {
             <form action="" className="d-flex">
                 <div className="form-group">
                     <label htmlFor="">Start Date</label>
-                    <input type="date" onChange={(e) => {
+                    <DatePicker dateFormat='dd/MM/yyyy' 
+                        placeholderText='DD/MM/YYYY' 
+                        selected={startDate} 
+                        onChange={(date) => {
+                          setStartDate(date);
+                          dispatch(getEmployeeGraphBar({startDate:date,endDate:endDate}))
+                        }} 
+                      />
+                    {/* <input type="date" onChange={(e) => {
                         setStartDate(e.target.value);
                         dispatch(getEmployeeGraphBar({startDate:e.target.value,endDate:endDate}))
-                    }} className="form-control" />
+                    }} className="form-control" /> */}
                 </div>
                 <div className="form-group">
                     <label htmlFor="">End Date</label>
-                    <input type="date" className="form-control" 
+                    <DatePicker dateFormat='dd/MM/yyyy' 
+                        placeholderText='DD/MM/YYYY' 
+                        selected={endDate} 
+                        onChange={(date) => {
+                          setEndDate(date)
+                          dispatch(getEmployeeGraphBar({startDate:startDate,endDate:date}))
+                        }} 
+                      />
+                    {/* <input type="date" className="form-control" 
                         onChange={(e)  => {
                             setEndDate(e.target.value)
                             dispatch(getEmployeeGraphBar({startDate:startDate,endDate:e.target.value}))
                         }}
-                    />
+                    /> */}
                 </div>
             </form>
             {/* <Grid
@@ -95,11 +109,22 @@ const Dashboard = () => {
               xl={9}
               xs={12}
             >
+
+              {
+                graphsData.loading 
+                ?
+                  <Box sx={{textAlign: 'center'}}>
+                      <CircularProgress  />
+                      <Typography>Loading...</Typography>
+                  </Box>
+                :
+                  <PieGraph 
+                    data={graphsData.dataBar}
+                    loadingState={false} title="User Graphs for test"
+                  />
+              }
               
-                <PieGraph 
-                  data={graphsData.dataBar}
-                  loadingState={false} title="User Graphs for test"
-                />
+                
             </Grid>
           </Grid>
         </Container>
