@@ -100,7 +100,7 @@ const OnBoardList = () =>  {
                                     dispatch(getOnboardDetailsDate({startDate:startDate,endDate:endDate,currentStatus:e.target.value}))
                                 }}
                             /> */}
-                            <select class="form-select" aria-label="Default select example"
+                            <select className="form-select" aria-label="Default select example"
                                   onChange={(e)  => {
                                     setCurrentStatus(e.target.value)
                                     dispatch(getOnboardDetailsDate({startDate:startDate,endDate:endDate,currentStatus:e.target.value}))
