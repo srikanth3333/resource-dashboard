@@ -49,14 +49,14 @@ const ReportsList = () =>  {
         <Container maxWidth={false}>
           <div className="row align-items-center">
             <div className="col-lg-12">
-              <div className="card shadow-sm">
+              <div className="card shadow-sm mb-2">
                 <div className="card-body text-center">
                       <h2>Total</h2>
                       <h3>{reports.totalCount}</h3>
                 </div>
               </div>
             </div> 
-            <div className="col-lg-7 d-flex">
+            <div className="col-lg-4">
               <div>
               <p>SkillSet:</p>
               <input type="text"  
@@ -66,17 +66,8 @@ const ReportsList = () =>  {
               }}
               className="form-control" placeholder="Skill set"/>
               </div>
-              <div>
-                <p>Relevant Experience:</p>
-                
-                <input type="text" 
-                  onChange={(e) => {
-                      setRel(e.target.value);
-                      dispatch(getReports({startDate:startDate,endDate:endDate, rel:e.target.value, total:total,skill:skill,}))
-                  }}
-                  className="form-control" placeholder="Relevant Experience"/>
-              </div>
-              <div>
+            </div> 
+            <div className="col-lg-4">
                 <p>Total Experience: </p>
                 <input type="text" 
                   onChange={(e) => {
@@ -85,43 +76,39 @@ const ReportsList = () =>  {
                   }}
                   className="form-control" placeholder="Total Experience"/>
               </div>
-            </div> 
-            <div className="col-lg-5">
-                <form action="" className="d-flex">
-                    <div className="form-group">
+              <div className="col-lg-4">
+                <p>Relevant Experience:</p>
+                <input type="text" 
+                  onChange={(e) => {
+                      setRel(e.target.value);
+                      dispatch(getReports({startDate:startDate,endDate:endDate, rel:e.target.value, total:total,skill:skill,}))
+                  }}
+                  className="form-control" placeholder="Relevant Experience"/>
+             </div>
+             <div className="col-lg-4 my-4">
                         <label htmlFor="">Start Date</label>
                         <DatePicker dateFormat='dd/MM/yyyy' 
                           placeholderText='DD/MM/YYYY' 
                           selected={startDate} 
+                          className="form-control"
                           onChange={(date) => {
                             setStartDate(date);
                             dispatch(getReports({startDate:date,endDate:endDate,total:total,rel:rel,skill:skill}))
                           }} 
                         />
-                        {/* <input type="date" onChange={(e) => {
-                            setStartDate(e.target.value);
-                            dispatch(getReports({startDate:e.target.value,endDate:endDate,total:total,rel:rel,skill:skill}))
-                        }} className="form-control" /> */}
-                    </div>
-                    <div className="form-group">
+              </div>
+              <div className="col-lg-4 my-4">
                         <label htmlFor="">End Date</label>
                         <DatePicker dateFormat='dd/MM/yyyy' 
                           placeholderText='DD/MM/YYYY' 
+                          className="form-control"
                           selected={endDate} 
                           onChange={(date) => {
                             setEndDate(date)
                             dispatch(getReports({startDate:startDate,endDate:date,total:total,rel:rel,skill:skill}))
                           }} 
                         />
-                        {/* <input type="date" className="form-control" 
-                            onChange={(e)  => {
-                                setEndDate(e.target.value)
-                                dispatch(getReports({startDate:startDate,endDate:e.target.value,total:total,rel:rel,skill:skill}))
-                            }}
-                        /> */}
-                    </div>
-                </form>
-            </div>
+              </div>
             <div className="col-lg-12">
               <button className="btn btn-success mb-3"onClick={() => clearFilters()}>Clear Filters</button>
             </div>
@@ -161,30 +148,31 @@ const ReportsList = () =>  {
                                   sort: true,
                               }
                           },
-                          {
-                            name: "Vendor Name",
-                            label: "Vendor Name",
-                            options: {
-                                filter: true,
-                                sort: true,
-                            }
-                        },
-                        {
-                          name: "Candiate Name",
-                          label: "Candiate Name",
-                          options: {
-                              filter: true,
-                              sort: true,
-                          }
-                      },
-                      {
-                        name: "Aadhar No",
-                        label: "Pan/Aadhar No",
-                        options: {
-                            filter: true,
-                            sort: true,
-                        }
-                    },                {
+                    //       {
+                    //         name: "Vendor Name",
+                    //         label: "Vendor Name",
+                    //         options: {
+                    //             filter: true,
+                    //             sort: true,
+                    //         }
+                    //     },
+                    //     {
+                    //       name: "Candiate Name",
+                    //       label: "Candiate Name",
+                    //       options: {
+                    //           filter: true,
+                    //           sort: true,
+                    //       }
+                    //   },
+                    //   {
+                    //     name: "Aadhar No",
+                    //     label: "Pan/Aadhar No",
+                    //     options: {
+                    //         filter: true,
+                    //         sort: true,
+                    //     }
+                    // },                
+                    {
                               name: "Contact No",
                               label: "Contact No",
                               options: {
@@ -265,62 +253,62 @@ const ReportsList = () =>  {
                                 sort: true,
                             }
                           },
-                          {
-                            name: "Telephonic Round Date",
-                            label: "Telephonic Round Date",
-                            options: {
-                                filter: true,
-                                sort: true,
-                            }
-                          },
-                          {
-                            name: "Telephonic Round  Time",
-                            label: "Telephonic Round Time",
-                            options: {
-                                filter: true,
-                                sort: true,
-                            }
-                          },
-                          {
-                            name: "Category",
-                            label: "Category",
-                            options: {
-                                filter: true,
-                                sort: true,
-                            }
-                          },
-                          {
-                            name: "Bill RATE",
-                            label: "Bill RATE",
-                            options: {
-                                filter: true,
-                                sort: true,
-                            }
-                          },
-                          {
-                            name: "RMG SPOC NAME",
-                            label: "RMG SPOC NAME",
-                            options: {
-                                filter: true,
-                                sort: true,
-                            }
-                          },
-                          {
-                            name: "RMG Email ID",
-                            label: "RMG Email ID",
-                            options: {
-                                filter: true,
-                                sort: true,
-                            }
-                          },
-                          {
-                            name: "For the Date of submission",
-                            label: "For the Date of submission",
-                            options: {
-                                filter: true,
-                                sort: true,
-                            }
-                          },
+                          // {
+                          //   name: "Telephonic Round Date",
+                          //   label: "Telephonic Round Date",
+                          //   options: {
+                          //       filter: true,
+                          //       sort: true,
+                          //   }
+                          // },
+                          // {
+                          //   name: "Telephonic Round  Time",
+                          //   label: "Telephonic Round Time",
+                          //   options: {
+                          //       filter: true,
+                          //       sort: true,
+                          //   }
+                          // },
+                          // {
+                          //   name: "Category",
+                          //   label: "Category",
+                          //   options: {
+                          //       filter: true,
+                          //       sort: true,
+                          //   }
+                          // },
+                          // {
+                          //   name: "Bill RATE",
+                          //   label: "Bill RATE",
+                          //   options: {
+                          //       filter: true,
+                          //       sort: true,
+                          //   }
+                          // },
+                          // {
+                          //   name: "RMG SPOC NAME",
+                          //   label: "RMG SPOC NAME",
+                          //   options: {
+                          //       filter: true,
+                          //       sort: true,
+                          //   }
+                          // },
+                          // {
+                          //   name: "RMG Email ID",
+                          //   label: "RMG Email ID",
+                          //   options: {
+                          //       filter: true,
+                          //       sort: true,
+                          //   }
+                          // },
+                          // {
+                          //   name: "For the Date of submission",
+                          //   label: "For the Date of submission",
+                          //   options: {
+                          //       filter: true,
+                          //       sort: true,
+                          //   }
+                          // },
                           {
                             name: "Resume",
                             label: "Resume",
@@ -330,7 +318,7 @@ const ReportsList = () =>  {
                                 customBodyRender: (val) => {
                                   return (
                                     <>
-                                      <a href={val} rel="noopener">View Resume</a>
+                                      <a target="_blank" rel="noopener noreferrer" href={val} rel="noopener">View Resume</a>
                                     </>
                                   )
                                 }

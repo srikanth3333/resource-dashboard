@@ -7,10 +7,10 @@ export const getReports = createAsyncThunk('reports/getReports',
         let {options} = getState();
         return await axios.get(`${API_URL}/addReportsListData?page=${payload.page}&skillSet=${payload.skill}&experienceRel=${payload.rel}&experienceTotal=${payload.total}&noticePeriod=${options.notice}&preWorkLoc=${options.preLoc}&category=${options.categoryValue}&startDate=${payload.startDate}&endDate=${payload.endDate}`)
         .then(res => {
-            console.log(res)
-            try{
+            if(res.data.status == true){
                 return {data:res.data.result,count:res.data.result.length,totalCount:res.data.totalCounts}
-            }catch(e){ 
+            }else{ 
+                alert(res.data.msg)
                 return {data:[]}
             }
         })
