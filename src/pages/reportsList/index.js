@@ -318,7 +318,7 @@ const ReportsList = () =>  {
                                 customBodyRender: (val) => {
                                   return (
                                     <>
-                                      <a target="_blank" rel="noopener noreferrer" href={val} rel="noopener">View Resume</a>
+                                      <a href={val}>View Resume</a>
                                     </>
                                   )
                                 }
